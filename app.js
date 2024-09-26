@@ -11,7 +11,7 @@ app.set("views", "./views");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// para armazenamento sem bd, testado, tanto q nesse arquivo vai ter o q testei
+// para armazenamento sem bd, testado, tanto q nesse arquivo vai ter o q testei que foi o do george 1984
 const livrosFilePath = path.join(__dirname, "livros.json");
 let livrosCache = []; // Armazenar livros na memória
 
