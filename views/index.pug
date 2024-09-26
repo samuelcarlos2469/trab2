@@ -1,0 +1,37 @@
+doctype html
+html(lang="pt-BR")
+    head
+        title Lista de Livros
+    body
+        h1 Lista de Livros
+
+        form(action="/filtrar" method="GET")
+            label(for="autor") Autor:
+            select(name="autor" id="autor")
+                option(value="") Selecione um Autor
+                each autor in autores
+                    option(value=autor) #{autor}
+
+            label(for="editora") Editora:
+            select(name="editora" id="editora")
+                option(value="") Selecione uma Editora
+                each editora in editoras
+                    option(value=editora) #{editora}
+
+            label(for="genero") Gênero:
+            select(name="genero" id="genero")
+                option(value="") Selecione um Gênero
+                each genero in generos
+                    option(value=genero) #{genero}
+
+            button(type="submit") Filtrar
+
+        ul
+            if livros.length > 0
+                each livro in livros
+                    li
+                        a(href=`/livro/${livro.id}`) #{livro.titulo}
+            else
+                li Não há livros com o filtro selecionado.
+
+        a(href="/") Voltar à lista de livros

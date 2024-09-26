@@ -1,0 +1,32 @@
+doctype html
+html(lang="pt-BR")
+    head
+        title Detalhes do Livro
+        script(src="/script.js") 
+    body
+        h1= livro.titulo
+        p Autor: #{livro.autor || 'Não atribuído'}
+        p Editora: #{livro.editora || 'Não atribuído'}
+        p Gênero: #{livro.genero || 'Não atribuído'}
+
+        h2 Atribuir informações
+        form(action=`/livro/${livro.id}/atribuir`, method='POST' onSubmit="salvarAtribuicao(event)")
+            input(type='hidden' id='livro-id', value=livro.id)
+            div
+                label(for='autor') Autor:
+                select(name='autor' id='autor')
+                    each autor in autores
+                        option(value=autor) #{autor}
+            div
+                label(for='editora') Editora:
+                select(name='editora' id='editora')
+                    each editora in editoras
+                        option(value=editora) #{editora}
+            div
+                label(for='genero') Gênero:
+                select(name='genero' id='genero')
+                    each genero in generos
+                        option(value=genero) #{genero}
+            button(type='submit') Atribuir
+
+        a(href="/") Voltar à lista de livros
